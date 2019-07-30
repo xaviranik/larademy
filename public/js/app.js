@@ -1930,6 +1930,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -37291,7 +37294,7 @@ var render = function() {
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-md-12" }, [
-                      _vm.errors.lenght > 0
+                      _vm.errors.length > 0
                         ? _c(
                             "ul",
                             { staticClass: "list-group alert alert-danger" },
@@ -37383,7 +37386,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-primary btn-round",
+                                staticClass: "btn btn-primary",
                                 attrs: { disabled: !_vm.isValidLoginForm },
                                 on: {
                                   click: function($event) {
@@ -37463,7 +37466,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
-      _c("a", { staticClass: "btn btn-link", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "btn btn-link", attrs: { href: "/register" } }, [
         _vm._v("Don't have an account? Create one here!")
       ])
     ])

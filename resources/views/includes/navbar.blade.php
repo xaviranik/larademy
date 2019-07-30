@@ -1,7 +1,7 @@
-<nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg {{ Request::path() ==  '/' ? 'navbar-transparent' : ''  }}" color-on-scroll="100">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#">Larademy </a>
+            <a class="navbar-brand" href="/">Larademy </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
                     </a>
                     @else
                     <a href="#" class="nav-link" data-toggle="modal" data-target="#signupModal">
-                        <i class="material-icons">account_circle</i> Login / Signup
+                        <i class="material-icons">account_circle</i> Login
                     </a>
                     @endif
                 </li>

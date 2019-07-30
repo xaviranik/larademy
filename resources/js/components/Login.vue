@@ -13,7 +13,7 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
-                  <ul class="list-group alert alert-danger" v-if="errors.lenght > 0">
+                  <ul class="list-group alert alert-danger" v-if="errors.length > 0">
                     <li
                       class="list-group-item"
                       v-for="error in errors"
@@ -56,13 +56,16 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                       <button
-                        class="btn btn-primary btn-round"
+                        class="btn btn-primary"
                         :disabled="!isValidLoginForm"
                         @click.prevent="attempLogin"
                       >Login</button>
                     </div>
                     <div class="text-center">
-                      <a class="btn btn-link" href="#">Don't have an account? Create one here!</a>
+                      <a
+                        class="btn btn-link"
+                        href="/register"
+                      >Don't have an account? Create one here!</a>
                     </div>
                   </form>
                   <hr />
