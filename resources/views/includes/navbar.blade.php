@@ -1,4 +1,4 @@
-<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg {{ Request::path() ==  '/' ? 'navbar-transparent' : ''  }}" color-on-scroll="100">
+<nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent" color-on-scroll="100">
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="/">Larademy </a>
