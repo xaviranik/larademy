@@ -29,7 +29,9 @@
 
         @include('includes.footer')
 
-        <vue-login></vue-login>
+        @if (!auth()->check())
+            <vue-login></vue-login>
+        @endif
     </div>
 
     <!--   Core JS Files   -->

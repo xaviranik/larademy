@@ -1923,7 +1923,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1942,9 +1941,9 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       }).then(function (res) {
-        console.log(res);
+        location.reload();
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.message);
       });
     }
   },
@@ -37354,11 +37353,13 @@ var render = function() {
                                 "button",
                                 {
                                   staticClass: "btn btn-primary btn-round",
-                                  attrs: {
-                                    href: "#",
-                                    disabled: !_vm.isValidLoginForm
-                                  },
-                                  on: { click: _vm.attempLogin }
+                                  attrs: { disabled: !_vm.isValidLoginForm },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.attempLogin($event)
+                                    }
+                                  }
                                 },
                                 [_vm._v("Login")]
                               )

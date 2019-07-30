@@ -20,9 +20,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    @if (auth()->check())
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#signupModal">
+                        <i class="material-icons">account_circle</i> {{ auth()->user()->name }}
+                    </a>
+                    @else
                     <a href="#" class="nav-link" data-toggle="modal" data-target="#signupModal">
                         <i class="material-icons">account_circle</i> Login / Signup
                     </a>
+                    @endif
                 </li>
             </ul>
         </div>

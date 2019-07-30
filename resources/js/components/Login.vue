@@ -49,10 +49,9 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                       <button
-                        href="#"
                         class="btn btn-primary btn-round"
                         :disabled="!isValidLoginForm"
-                        @click="attempLogin"
+                        @click.prevent="attempLogin"
                       >Login</button>
                     </div>
                     <div class="text-center">
@@ -106,10 +105,10 @@ export default {
           password: this.password
         })
         .then(res => {
-          console.log(res);
+          location.reload();
         })
         .catch(error => {
-          console.log(error);
+          console.log(error.message);
         });
     }
   },
