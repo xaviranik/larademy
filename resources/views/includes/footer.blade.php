@@ -1,14 +1,8 @@
-<footer class="footer footer-default">
+<footer class="footer footer-default mt-5">
     <div class="container">
-        <nav class="float-left">
-            <ul>
-                <li>
-                    <a href="#">
-                        Larademy
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="copyright float-left">
+            LARADEMY
+        </div>
         <div class="copyright float-right">
             &copy;
             2019, made with <i class="material-icons">favorite</i> by

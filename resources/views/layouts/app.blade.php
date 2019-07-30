@@ -11,12 +11,12 @@
     <title>Larademy</title>
 
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     {{-- Style --}}
-    <link href="{{ asset('assets/css/material-kit.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/material-kit.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -27,12 +27,12 @@
 
         @yield('content')
 
-        @include('includes.footer')
-
         @if (!auth()->check())
             <vue-login></vue-login>
         @endif
     </div>
+
+    @include('includes.footer')
 
     <!--   Core JS Files   -->
     <script src="{{ asset('js/app.js') }}"></script>

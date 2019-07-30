@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="page-header" style="background: linear-gradient(to right, #5f2c82, #49a09d);">
+<div class="page-header" style="background: linear-gradient(to right, #d53369, #cbad6d);">
     <div class="container">
         <div class="row justify-content-center" style="margin: 200px 0px;">
             <div class="col-md-6">

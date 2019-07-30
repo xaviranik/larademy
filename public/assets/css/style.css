@@ -1,0 +1,12 @@
+#app {
+    min-height: calc(100vh - 120px);
+}
+
+.x-header {
+    height: 25vh;
+    background: linear-gradient(to right, #da4453, #89216b);
+}
+
+footer {
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+}
