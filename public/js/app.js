@@ -37291,21 +37291,23 @@ var render = function() {
                 _c("div", { staticClass: "modal-body" }, [
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-md-12" }, [
-                      _c(
-                        "ul",
-                        { staticClass: "list-group alert alert-danger" },
-                        _vm._l(_vm.errors, function(error) {
-                          return _c(
-                            "li",
-                            {
-                              key: _vm.errors.indexOf(error),
-                              staticClass: "list-group-item"
-                            },
-                            [_vm._v(_vm._s(error))]
+                      _vm.errors.lenght > 0
+                        ? _c(
+                            "ul",
+                            { staticClass: "list-group alert alert-danger" },
+                            _vm._l(_vm.errors, function(error) {
+                              return _c(
+                                "li",
+                                {
+                                  key: _vm.errors.indexOf(error),
+                                  staticClass: "list-group-item"
+                                },
+                                [_vm._v(_vm._s(error))]
+                              )
+                            }),
+                            0
                           )
-                        }),
-                        0
-                      ),
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("form", { staticClass: "form" }, [
                         _c("div", { staticClass: "card-body" }, [

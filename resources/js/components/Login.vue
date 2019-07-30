@@ -13,7 +13,7 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
-                  <ul class="list-group alert alert-danger">
+                  <ul class="list-group alert alert-danger" v-if="errors.lenght > 0">
                     <li
                       class="list-group-item"
                       v-for="error in errors"
