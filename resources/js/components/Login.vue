@@ -88,7 +88,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      loading: false
     };
   },
 
@@ -99,6 +100,7 @@ export default {
     },
 
     attempLogin() {
+      this.loading = true;
       axios
         .post("/login", {
           email: this.email,
@@ -109,13 +111,14 @@ export default {
         })
         .catch(error => {
           console.log(error.message);
+          this.loading = false;
         });
     }
   },
 
   computed: {
     isValidLoginForm() {
-      return this.validateEmail() && this.password;
+      return this.validateEmail() && this.password && !this.loading;
     }
   }
 };

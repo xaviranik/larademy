@@ -1928,7 +1928,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      loading: false
     };
   },
   methods: {
@@ -1937,6 +1938,9 @@ __webpack_require__.r(__webpack_exports__);
       return re.test(String(this.email).toLowerCase());
     },
     attempLogin: function attempLogin() {
+      var _this = this;
+
+      this.loading = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/login", {
         email: this.email,
         password: this.password
@@ -1944,12 +1948,13 @@ __webpack_require__.r(__webpack_exports__);
         location.reload();
       })["catch"](function (error) {
         console.log(error.message);
+        _this.loading = false;
       });
     }
   },
   computed: {
     isValidLoginForm: function isValidLoginForm() {
-      return this.validateEmail() && this.password;
+      return this.validateEmail() && this.password && !this.loading;
     }
   }
 });
