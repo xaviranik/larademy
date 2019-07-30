@@ -13,7 +13,14 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
-                  <form class="form" method action>
+                  <ul class="list-group alert alert-danger">
+                    <li
+                      class="list-group-item"
+                      v-for="error in errors"
+                      :key="errors.indexOf(error)"
+                    >{{ error }}</li>
+                  </ul>
+                  <form class="form">
                     <div class="card-body">
                       <div class="form-group">
                         <div class="input-group">
@@ -89,7 +96,8 @@ export default {
     return {
       email: "",
       password: "",
-      loading: false
+      loading: false,
+      errors: []
     };
   },
 
@@ -100,6 +108,7 @@ export default {
     },
 
     attempLogin() {
+      this.errors = [];
       this.loading = true;
       axios
         .post("/login", {
@@ -110,8 +119,12 @@ export default {
           location.reload();
         })
         .catch(error => {
-          console.log(error.message);
           this.loading = false;
+          if (error.response.status == 422) {
+            this.errors.push("We could not verify your account details.");
+          } else {
+            this.errors.push("Something went wrong! Please try again.");
+          }
         });
     }
   },
