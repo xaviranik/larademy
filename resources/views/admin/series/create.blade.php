@@ -4,7 +4,7 @@
 <div class="main main-raised page-header x-header mb-4">
     <div class="container">
         <div class="section text-center">
-            <h2 class="title">Create course series</h2>
+            <h2 class="title">Create Course Series</h2>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
                 <div class="card-header card-header-primary">Create Course</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('series.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -36,9 +36,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1" class="btn btn-default">Upload cover image <i class="material-icons">cloud_upload</i><label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <div class="input-group row">
+                            <div class="custom-file">
+                                <input name="image" type="file" class="custom-file-input btn btn-default" id="inputGroupFile02" />
+                                <label class="custom-file-label col-md-12 col-form-label text-md-left" for="inputGroupFile02">Choose Cover Image</label>
+                            </div>
                         </div>
 
                         <div class="form-group row text-center">

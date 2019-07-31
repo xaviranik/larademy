@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-header"
-    style="background: linear-gradient(to right, #d53369, #cbad6d);">
+<div class="page-header">
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">

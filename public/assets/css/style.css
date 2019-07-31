@@ -2,11 +2,15 @@
     min-height: calc(100vh - 120px);
 }
 
+.page-header {
+    background: linear-gradient(to right, #d53369, #cbad6d);
+}
+
 .x-header {
     height: 25vh;
-    background: linear-gradient(to right, #da4453, #89216b);
+    background: linear-gradient(to right, #d53369, #cbad6d);
 }
 
 footer {
-    background: linear-gradient(to right, #ece9e6, #ffffff);
+    background: #fff;
 }
