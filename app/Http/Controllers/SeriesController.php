@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSeriesRequest;
+use Illuminate\Support\Facades\Session;
 
 class SeriesController extends Controller
 {
@@ -37,6 +38,8 @@ class SeriesController extends Controller
     {
         $request->uploadSeriesImage()
             ->storeSeries();
+
+        Session()->flash('success', 'Series created successfully');
 
         return redirect()->back();
     }
