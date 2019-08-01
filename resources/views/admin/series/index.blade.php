@@ -15,7 +15,7 @@
                 <div class="card-header card-header-primary">Customize your course series</div>
 
                 <div class="card-body">
-                    Hello world!
+                    {{ $series->lesson->first()->title }}
                 </div>
             </div>
         </div>
