@@ -32,7 +32,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            placeholder="Email..."
+                            placeholder="Email"
                             v-model="email"
                           />
                         </div>
@@ -47,7 +47,7 @@
                           </div>
                           <input
                             type="password"
-                            placeholder="Password..."
+                            placeholder="Password"
                             class="form-control"
                             v-model="password"
                           />

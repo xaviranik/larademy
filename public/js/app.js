@@ -37328,10 +37328,7 @@ var render = function() {
                                   }
                                 ],
                                 staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Email..."
-                                },
+                                attrs: { type: "text", placeholder: "Email" },
                                 domProps: { value: _vm.email },
                                 on: {
                                   input: function($event) {
@@ -37361,7 +37358,7 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   type: "password",
-                                  placeholder: "Password..."
+                                  placeholder: "Password"
                                 },
                                 domProps: { value: _vm.password },
                                 on: {
