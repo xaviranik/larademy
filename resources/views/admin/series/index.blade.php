@@ -15,7 +15,7 @@
                 <div class="card-header card-header-primary">Customize your course series</div>
 
                 <div class="card-body">
-                    {{ $series->lesson->first()->title }}
+                    <vue-lessons default_lessons="{{ $series->lesson }}"></vue-lessons>
                 </div>
             </div>
         </div>
