@@ -14,3 +14,7 @@
 footer {
     background: #fff;
 }
+
+.bg-gredient-primary {
+    background: linear-gradient(to right, #d53369, #cbad6d) !important;
+}

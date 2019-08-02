@@ -12,7 +12,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header card-header-primary">Customize your course series</div>
+                <div class="card-header card-header-primary bg-gredient-primary">
+                    Customize your course series
+                </div>
 
                 <div class="card-body">
                     <vue-lessons default_lessons="{{ $series->lesson }}"></vue-lessons>
