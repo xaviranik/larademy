@@ -17,14 +17,14 @@
 
     export default {
         props: [
-            'default_lessons'
+            'default_lessons', 'series_id'
         ],
         components:{
             'create-lesson' : CreateLesson
         },
         data() {
             return {
-                lessons: this.default_lessons
+                lessons: this.default_lessons,
             }
         },
         computed: {
@@ -34,7 +34,7 @@
         },
         methods:{
             createNewLesson() {
-                this.$emit('create_new_lesson');
+                this.$emit('create_new_lesson', this.series_id);
             }
         }
     }

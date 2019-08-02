@@ -10,7 +10,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form">
+                    <form class="form" @submit.prevent="">
                         <div class="form-group">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Lesson title" v-model="title" />
@@ -30,14 +30,15 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <textarea class="form-control" placeholder="Lesson description" rows="3" v-model="description"></textarea>
+                                <textarea class="form-control" placeholder="Lesson description" rows="3"
+                                    v-model="description"></textarea>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" @click="createLesson">Save Lesson</button>
                 </div>
             </div>
         </div>
@@ -45,19 +46,38 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    import Axios from 'axios';
     export default {
         mounted() {
-            this.$parent.$on('create_new_lesson', () => {
+            this.$parent.$on('create_new_lesson', (seriesID) => {
                 $('#create-lesson-modal').modal();
+                this.seriesID = seriesID;
             });
         },
         data() {
             return {
-                'title' : '',
-                'description' : '',
-                'episode_number' : '',
-                'video_id' : '',
+                title: '',
+                description: '',
+                episode_number: '',
+                video_id: '',
+                series_id: ''
+            }
+        },
+        methods: {
+            createLesson() {
+                console.log(this.seriesID);
+                Axios.post(`/admin/${this.seriesID}/lessons`, {
+                        title: this.title,
+                        description: this.description,
+                        episode_number: this.episode_number,
+                        video_id: this.video_id
+                    })
+                    .then(resp => {
+                        console.log(resp);
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    });
             }
         }
     }

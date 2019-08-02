@@ -1855,7 +1855,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['default_lessons'],
+  props: ['default_lessons', 'series_id'],
   components: {
     'create-lesson': _children_CreateLesson__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -1871,7 +1871,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createNewLesson: function createNewLesson() {
-      this.$emit('create_new_lesson');
+      this.$emit('create_new_lesson', this.series_id);
     }
   }
 });
@@ -2084,20 +2084,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    this.$parent.$on('create_new_lesson', function () {
+    var _this = this;
+
+    this.$parent.$on('create_new_lesson', function (seriesID) {
       $('#create-lesson-modal').modal();
+      _this.seriesID = seriesID;
     });
   },
   data: function data() {
     return {
-      'title': '',
-      'description': '',
-      'episode_number': '',
-      'video_id': ''
+      title: '',
+      description: '',
+      episode_number: '',
+      video_id: '',
+      series_id: ''
     };
+  },
+  methods: {
+    createLesson: function createLesson() {
+      console.log(this.seriesID);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/admin/".concat(this.seriesID, "/lessons"), {
+        title: this.title,
+        description: this.description,
+        episode_number: this.episode_number,
+        video_id: this.video_id
+      }).then(function (resp) {
+        console.log(resp);
+      })["catch"](function (error) {
+        console.log(error.message);
+      });
+    }
   }
 });
 
@@ -37700,114 +37720,144 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
-            _c("form", { staticClass: "form" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.title,
-                        expression: "title"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Lesson title" },
-                    domProps: { value: _vm.title },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+            _c(
+              "form",
+              {
+                staticClass: "form",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.title,
+                          expression: "title"
                         }
-                        _vm.title = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.video_id,
-                        expression: "video_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Vimeo video ID" },
-                    domProps: { value: _vm.video_id },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Lesson title" },
+                      domProps: { value: _vm.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.title = $event.target.value
                         }
-                        _vm.video_id = $event.target.value
                       }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.episode_number,
-                        expression: "episode_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "number", placeholder: "Episode number" },
-                    domProps: { value: _vm.episode_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.video_id,
+                          expression: "video_id"
                         }
-                        _vm.episode_number = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.description,
-                        expression: "description"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { placeholder: "Lesson description", rows: "3" },
-                    domProps: { value: _vm.description },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Vimeo video ID" },
+                      domProps: { value: _vm.video_id },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.video_id = $event.target.value
                         }
-                        _vm.description = $event.target.value
                       }
-                    }
-                  })
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.episode_number,
+                          expression: "episode_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "number", placeholder: "Episode number" },
+                      domProps: { value: _vm.episode_number },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.episode_number = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.description,
+                          expression: "description"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Lesson description", rows: "3" },
+                      domProps: { value: _vm.description },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.description = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ])
-              ])
-            ])
+              ]
+            )
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", "data-dismiss": "modal" }
+              },
+              [_vm._v("Close")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: { click: _vm.createLesson }
+              },
+              [_vm._v("Save Lesson")]
+            )
+          ])
         ])
       ])
     ]
@@ -37836,27 +37886,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save changes")]
       )
     ])
   }

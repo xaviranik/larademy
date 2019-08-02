@@ -23,6 +23,7 @@ Route::get('/logout', function () {
 
 Route::middleware('admin')->prefix('admin')->group(function () {
     Route::resource('series', 'SeriesController');
+    Route::resource('{series_by_id}/lessons', 'LessonsController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

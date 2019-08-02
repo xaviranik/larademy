@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="card-body">
-                    <vue-lessons default_lessons="{{ $series->lesson }}"></vue-lessons>
+                    <vue-lessons default_lessons="{{ $series->lesson }}" series_id="{{ $series->id }}"></vue-lessons>
                 </div>
             </div>
         </div>
