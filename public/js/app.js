@@ -1855,19 +1855,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$on('lesson_created', function (lesson) {
+      _this.lessons.push(lesson);
+    });
+  },
   props: ['default_lessons', 'series_id'],
   components: {
     'create-lesson': _children_CreateLesson__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      lessons: this.default_lessons
+      lessons: JSON.parse(this.default_lessons)
     };
-  },
-  computed: {
-    formattedLessons: function formattedLessons() {
-      return JSON.parse(this.lessons);
-    }
   },
   methods: {
     createNewLesson: function createNewLesson() {
@@ -2106,6 +2108,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createLesson: function createLesson() {
+      var _this2 = this;
+
       console.log(this.seriesID);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/admin/".concat(this.seriesID, "/lessons"), {
         title: this.title,
@@ -2113,7 +2117,9 @@ __webpack_require__.r(__webpack_exports__);
         episode_number: this.episode_number,
         video_id: this.video_id
       }).then(function (resp) {
-        console.log(resp);
+        _this2.$parent.$emit('lesson_created', resp.data);
+
+        $('#create-lesson-modal').modal('hide');
       })["catch"](function (error) {
         console.log(error.message);
       });
@@ -37427,7 +37433,7 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "list-group" },
-      _vm._l(_vm.formattedLessons, function(lesson) {
+      _vm._l(_vm.lessons, function(lesson) {
         return _c(
           "li",
           { key: _vm.lessons.indexOf(lesson), staticClass: "list-group-item" },

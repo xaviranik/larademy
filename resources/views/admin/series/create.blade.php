@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header card-header-primary">Create Course</div>
+                <div class="card-header card-header-primary bg-gredient-primary">Create Course</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('series.store') }}" enctype="multipart/form-data" autocomplete="off">

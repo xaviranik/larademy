@@ -2,7 +2,7 @@
     <div class="lessons">
         <button class="btn btn-primary" @click="createNewLesson">Create New Lesson</button>
         <ul class="list-group">
-            <li class="list-group-item" v-for="lesson in formattedLessons" :key="lessons.indexOf(lesson)">
+            <li class="list-group-item" v-for="lesson in lessons" :key="lessons.indexOf(lesson)">
                 {{ lesson.title }}
             </li>
         </ul>
@@ -16,6 +16,11 @@
     import CreateLesson from './children/CreateLesson';
 
     export default {
+        mounted() {
+            this.$on('lesson_created', (lesson) => {
+                this.lessons.push(lesson);
+            })
+        },
         props: [
             'default_lessons', 'series_id'
         ],
@@ -24,12 +29,7 @@
         },
         data() {
             return {
-                lessons: this.default_lessons,
-            }
-        },
-        computed: {
-            formattedLessons() {
-                return JSON.parse(this.lessons);
+                lessons: JSON.parse(this.default_lessons),
             }
         },
         methods:{

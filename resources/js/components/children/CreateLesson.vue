@@ -73,7 +73,8 @@
                         video_id: this.video_id
                     })
                     .then(resp => {
-                        console.log(resp);
+                        this.$parent.$emit('lesson_created', resp.data);
+                        $('#create-lesson-modal').modal('hide');
                     })
                     .catch(error => {
                         console.log(error.message);
