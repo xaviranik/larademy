@@ -19,7 +19,7 @@
         props: [
             'default_lessons', 'series_id'
         ],
-        components:{
+        components: {
             'create-lesson' : CreateLesson
         },
         data() {
