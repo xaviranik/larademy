@@ -18,3 +18,21 @@ footer {
 .bg-gredient-primary {
     background: linear-gradient(to right, #d53369, #cbad6d) !important;
 }
+
+.button-icon {
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 6px 8px;
+    font-size: 1rem !important;
+    
+    cursor: pointer;
+}
+
+.list-group-item :first-child {
+    margin-right: 0px;
+}
+
+.modal-dialog .modal-footer button {
+    margin-right: 8px;
+}
