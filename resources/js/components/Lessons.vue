@@ -6,7 +6,8 @@
                 :key="lessons.indexOf(lesson)">
                 <div>{{ lesson.title }}</div>
                 <div>
-                    <button class="button-icon bg-primary"><i class="material-icons" @click="editLesson(lesson)">create</i></button>
+                    <button class="button-icon bg-primary"><i class="material-icons"
+                            @click="editLesson(lesson)">create</i></button>
                     <button class="button-icon bg-danger" @click="deleteLesson(lesson.id, key)"><i
                             class="material-icons">delete_forever</i></button>
                 </div>
@@ -26,20 +27,23 @@
     export default {
         mounted() {
             this.$on('lesson_created', (lesson) => {
-                window.noty({
-                    message : 'Lesson created successfully!',
-                    type: 'success'
-                });
-                this.lessons.push(lesson);
-            }),
+                    window.noty({
+                        message: 'Lesson created successfully!',
+                        type: 'success'
+                    });
+                    this.lessons.push(lesson);
+                }),
 
-            this.$on('lesson_updated', (lesson) => {
-                let lesson_index = this.lessons.findIndex(l => {
-                    return lesson.id == l.id;
-                });
-
-                this.lessons.splice(lesson_index, 1, lesson);
-            })
+                this.$on('lesson_updated', (lesson) => {
+                    let lesson_index = this.lessons.findIndex(l => {
+                        return lesson.id == l.id;
+                    });
+                    this.lessons.splice(lesson_index, 1, lesson);
+                    window.noty({
+                        message: 'Lesson updated successfully!',
+                        type: 'success'
+                    });
+                })
         },
         props: [
             'default_lessons', 'series_id'
@@ -58,19 +62,26 @@
             },
             deleteLesson(id, key) {
                 bootbox.confirm("Are you sure you want to delete this lesson?", (result) => {
-                    if(result) {
+                    if (result) {
                         Axios.delete(`/admin/${this.series_id}/lessons/${id}`)
-                        .then(res => {
-                            this.lessons.splice(key, 1);
-                        }).catch(error => {
-                            console.log(error)
-                        });
+                            .then(res => {
+                                this.lessons.splice(key, 1);
+                                window.noty({
+                                    message: 'Lesson deleted!',
+                                    type: 'success'
+                                });
+                            }).catch(error => {
+                                window.handleErrors(error);
+                            });
                     }
                 })
             },
             editLesson(lesson) {
                 let series_id = this.series_id
-                this.$emit('edit_lesson', {lesson, series_id });
+                this.$emit('edit_lesson', {
+                    lesson,
+                    series_id
+                });
             }
         }
     }

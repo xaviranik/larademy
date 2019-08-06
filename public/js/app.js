@@ -1863,6 +1863,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1883,6 +1884,11 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       _this.lessons.splice(lesson_index, 1, lesson);
+
+      window.noty({
+        message: 'Lesson updated successfully!',
+        type: 'success'
+      });
     });
   },
   props: ['default_lessons', 'series_id'],
@@ -1905,8 +1911,13 @@ __webpack_require__.r(__webpack_exports__);
         if (result) {
           axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]("/admin/".concat(_this2.series_id, "/lessons/").concat(id)).then(function (res) {
             _this2.lessons.splice(key, 1);
+
+            window.noty({
+              message: 'Lesson deleted!',
+              type: 'success'
+            });
           })["catch"](function (error) {
-            console.log(error);
+            window.handleErrors(error);
           });
         }
       });
@@ -2229,7 +2240,7 @@ var Lesson = function Lesson(lesson) {
 
         $('#create-lesson-modal').modal('hide');
       })["catch"](function (error) {
-        console.log(error.message);
+        window.handleErrors(error);
       });
     },
     updateLesson: function updateLesson() {
@@ -2240,7 +2251,7 @@ var Lesson = function Lesson(lesson) {
 
         $('#create-lesson-modal').modal('hide');
       })["catch"](function (error) {
-        console.log(error.response.data);
+        window.handleErrors(error);
       });
     }
   }
@@ -8090,7 +8101,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.alert-noty {\n    position: fixed;\n    right: 50px;\n    top: 100px;\n    z-index: 50;\n    border-radius: 4px;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n\n", ""]);
+exports.push([module.i, "\n.alert-noty {\n    position: fixed;\n    right: 50px;\n    top: 100px;\n    z-index: 100;\n    border-radius: 4px;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n\n", ""]);
 
 // exports
 
@@ -52318,6 +52329,20 @@ window.events = new Vue();
 window.noty = function (notification) {
   window.events.$emit('notification', notification);
 };
+
+window.handleErrors = function (error) {
+  if (error.response.status == 422) {
+    window.noty({
+      message: 'Validation errors',
+      type: 'danger'
+    });
+  }
+
+  window.noty({
+    message: 'Something went wrong! Please try again later.',
+    type: 'danger'
+  });
+};
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -52714,8 +52739,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Web Development\Projects\PHP\Laravel\larademy\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\Web Development\Projects\PHP\Laravel\larademy\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\php\Projects\Laravel\larademy\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\php\Projects\Laravel\larademy\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

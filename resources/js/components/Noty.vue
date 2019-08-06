@@ -37,7 +37,7 @@
         position: fixed;
         right: 50px;
         top: 100px;
-        z-index: 50;
+        z-index: 100;
         border-radius: 4px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }

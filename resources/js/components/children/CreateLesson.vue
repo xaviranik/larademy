@@ -100,7 +100,7 @@
                         $('#create-lesson-modal').modal('hide');
                     })
                     .catch(error => {
-                        console.log(error.message);
+                        window.handleErrors(error);
                     });
             },
             updateLesson() {
@@ -110,7 +110,7 @@
                         $('#create-lesson-modal').modal('hide');
                     })
                     .catch(error => {
-                        console.log(error.response.data);
+                        window.handleErrors(error);
                     })
             }
         }
