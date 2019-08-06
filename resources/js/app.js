@@ -7,6 +7,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.events = new Vue();
+
+
+window.noty = function(notification) {
+    window.events.$emit('notification', notification);
+}
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,6 +27,7 @@ window.Vue = require('vue');
 
 Vue.component('vue-login', require('./components/Login.vue').default);
 Vue.component('vue-lessons', require('./components/Lessons.vue').default);
+Vue.component('vue-noty', require('./components/Noty.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

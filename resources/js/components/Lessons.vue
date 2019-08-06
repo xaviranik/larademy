@@ -26,6 +26,10 @@
     export default {
         mounted() {
             this.$on('lesson_created', (lesson) => {
+                window.noty({
+                    message : 'Lesson created successfully!',
+                    type: 'success'
+                });
                 this.lessons.push(lesson);
             }),
 

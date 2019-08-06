@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
                 <div class="brand text-center">
-                    <h1>Learn or Teach</h1>
-                    <h3 class="title text-center">Enroll in courses and take a boost in your career</h3>
+                    <h1>Learn by Doing</h1>
+                    <h3 class="title text-center">Learn the latest tech skills to propel your career forward</h3>
                     <a href="/register" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
