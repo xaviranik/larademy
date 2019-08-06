@@ -4,7 +4,7 @@
 <div class="main main-raised page-header x-header mb-4">
     <div class="container">
         <div class="section text-center">
-            <h2 class="title">Create Course Series</h2>
+            <h2 class="title">Update: {{ $series->title }}</h2>
         </div>
     </div>
 </div>
@@ -12,18 +12,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header card-header-primary bg-gredient-primary">Create Course</div>
+                <div class="card-header card-header-primary bg-gredient-primary">Update Course</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('series.store') }}" enctype="multipart/form-data" autocomplete="off">
+                    <form method="POST" action="{{ route('series.update', $series->slug) }}" enctype="multipart/form-data" autocomplete="off">
                         @csrf
+                        @method('PUT')
 
                         <div class="form-group row">
                             <label for="title" class="col-md-12 col-form-label text-md-left">Title</label>
 
                             <div class="col-md-12">
                                 <input id="title" type="text" class="form-control" name="title"
-                                    value="{{ old('title') }}" required>
+                                    value="{{ $series->title }}" required>
                             </div>
                         </div>
 
@@ -32,7 +33,7 @@
 
                             <div class="col-md-12">
                                 <input id="description" type="description" class="form-control" name="description"
-                                    value="{{ old('description') }}" required>
+                                    value="{{ $series->description }}" required>
                             </div>
                         </div>
 
@@ -45,7 +46,7 @@
 
                         <div class="form-group row text-center">
                             <div class="col-md-12 mt-4">
-                                <button type="submit" class="btn btn-primary">Create Course</button>
+                                <button type="submit" class="btn btn-primary">Update Course</button>
                             </div>
                         </div>
                     </form>

@@ -25,8 +25,8 @@
                             @forelse ($series as $s)
                             <tr>
                                 <td>{{ $s->title }}</td>
-                                <td><a href="#" class="button-icon text-primary"><i class="material-icons">create</i></a></td>
-                                <td><a href="#" class="button-icon text-danger"><i class="material-icons">delete_forever</i></a></td>
+                                <td><a href="{{ route('series.edit', $s->slug) }}"><i class="material-icons button-icon text-primary">create</i></a></td>
+                                <td><a href="#"><i class="material-icons button-icon text-danger">delete_forever</i></a></td>
                             </tr>
                             @empty
 
