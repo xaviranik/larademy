@@ -1863,7 +1863,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -39604,11 +39603,11 @@ var render = function() {
             _c("div", [_vm._v(_vm._s(lesson.title))]),
             _vm._v(" "),
             _c("div", [
-              _c("button", { staticClass: "button-icon bg-primary" }, [
+              _c("span", [
                 _c(
                   "i",
                   {
-                    staticClass: "material-icons",
+                    staticClass: "material-icons button-icon text-primary",
                     on: {
                       click: function($event) {
                         return _vm.editLesson(lesson)
@@ -39620,9 +39619,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c(
-                "button",
+                "span",
                 {
-                  staticClass: "button-icon bg-danger",
                   on: {
                     click: function($event) {
                       return _vm.deleteLesson(lesson.id, key)
@@ -39630,9 +39628,11 @@ var render = function() {
                   }
                 },
                 [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("delete_forever")
-                  ])
+                  _c(
+                    "i",
+                    { staticClass: "material-icons button-icon text-danger" },
+                    [_vm._v("delete_forever")]
+                  )
                 ]
               )
             ])

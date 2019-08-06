@@ -6,10 +6,9 @@
                 :key="lessons.indexOf(lesson)">
                 <div>{{ lesson.title }}</div>
                 <div>
-                    <button class="button-icon bg-primary"><i class="material-icons"
-                            @click="editLesson(lesson)">create</i></button>
-                    <button class="button-icon bg-danger" @click="deleteLesson(lesson.id, key)"><i
-                            class="material-icons">delete_forever</i></button>
+                    <span><i class="material-icons button-icon text-primary" @click="editLesson(lesson)">create</i></span>
+                    <span @click="deleteLesson(lesson.id, key)"><i
+                            class="material-icons button-icon text-danger">delete_forever</i></span>
                 </div>
             </li>
         </ul>

@@ -16,20 +16,29 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="material-icons">apps</i> Courses
+                        <i class="material-icons">apps</i> All Courses
+                    </a>
+                </li>
+                @auth
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="material-icons">account_circle</i> {{ auth()->user()->name }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    @if (auth()->check())
-                    <a href="#" class="nav-link" data-toggle="modal" data-target="#signupModal">
-                        <i class="material-icons">account_circle</i> {{ auth()->user()->name }}
+                    <a href="{{ route('series.index') }}" class="nav-link">
+                        <i class="material-icons">dashboard</i> My Courses
                     </a>
-                    @else
+                </li>
+                @endauth
+
+                @guest
+                <li class="nav-item">
                     <a href="#" class="nav-link" data-toggle="modal" data-target="#signupModal">
                         <i class="material-icons">account_circle</i> Login
                     </a>
-                    @endif
                 </li>
+                @endguest
             </ul>
         </div>
     </div>

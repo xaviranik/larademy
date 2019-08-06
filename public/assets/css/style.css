@@ -19,20 +19,20 @@ footer {
     background: linear-gradient(to right, #d53369, #cbad6d) !important;
 }
 
-.button-icon {
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 6px 8px;
-    font-size: 1rem !important;
-    
-    cursor: pointer;
-}
-
 .list-group-item :first-child {
     margin-right: 0px;
 }
 
 .modal-dialog .modal-footer button {
     margin-right: 8px;
+}
+
+.button-icon {
+    padding: 5px;
+    font-size: 1.5rem !important;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.button-icon:hover {
+    font-size: 1.9rem !important;
 }
