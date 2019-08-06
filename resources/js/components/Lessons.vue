@@ -6,7 +6,7 @@
                 :key="lessons.indexOf(lesson)">
                 <div>{{ lesson.title }}</div>
                 <div>
-                    <button class="button-icon bg-primary"><i class="material-icons">create</i></button>
+                    <button class="button-icon bg-primary"><i class="material-icons" @click="editLesson(lesson)">create</i></button>
                     <button class="button-icon bg-danger" @click="deleteLesson(lesson.id, key)"><i
                             class="material-icons">delete_forever</i></button>
                 </div>
@@ -27,6 +27,14 @@
         mounted() {
             this.$on('lesson_created', (lesson) => {
                 this.lessons.push(lesson);
+            }),
+
+            this.$on('lesson_updated', (lesson) => {
+                let lesson_index = this.lessons.findIndex(l => {
+                    return lesson.id == l.id;
+                });
+
+                this.lessons.splice(lesson_index, 1, lesson);
             })
         },
         props: [
@@ -55,6 +63,10 @@
                         });
                     }
                 })
+            },
+            editLesson(lesson) {
+                let series_id = this.series_id
+                this.$emit('edit_lesson', {lesson, series_id });
             }
         }
     }
