@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSeriesRequest;
-use Illuminate\Support\Facades\Session;
 use App\Series;
+use App\Http\Requests\UpdateSeriesRequest;
 
 class SeriesController extends Controller
 {
@@ -70,11 +70,11 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Series $series)
+    public function update(UpdateSeriesRequest $request, Series $series)
     {
         if($request->hasFile('image'))
         {
-            $series->image_url = $request->uploadSeriesImage()->fileName;
+            $series->image_url = $request->uploadSeriesImage()->file_name;
         }
 
         $series->title = $request->title;
@@ -82,6 +82,9 @@ class SeriesController extends Controller
         $series->slug = str_slug($request->title);
 
         $series->save();
+        
+        session()->flash('success', 'Successfully updated series');
+
         return redirect()->route('series.index');
     }
 
