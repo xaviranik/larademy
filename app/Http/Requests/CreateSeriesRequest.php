@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Series;
 
-class CreateSeriesRequest extends FormRequest
+class CreateSeriesRequest extends SeriesRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,15 +28,6 @@ class CreateSeriesRequest extends FormRequest
             'description' => 'required',
             'image' => 'required|image',
         ];
-    }
-
-    public function uploadSeriesImage()
-    {
-        $uploaded_image = $this->image;
-        $this->file_name = str_slug($this->title) . '.' . $uploaded_image->getClientOriginalExtension();
-        $uploaded_image->storePubliclyAs('series', $this->file_name);
-
-        return $this;
     }
 
     public function storeSeries()

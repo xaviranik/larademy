@@ -72,17 +72,8 @@ class SeriesController extends Controller
      */
     public function update(UpdateSeriesRequest $request, Series $series)
     {
-        if($request->hasFile('image'))
-        {
-            $series->image_url = $request->uploadSeriesImage()->file_name;
-        }
+        $request->updateSeries($series);
 
-        $series->title = $request->title;
-        $series->description = $request->description;
-        $series->slug = str_slug($request->title);
-
-        $series->save();
-        
         session()->flash('success', 'Successfully updated series');
 
         return redirect()->route('series.index');
