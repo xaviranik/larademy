@@ -17,8 +17,17 @@
 
 <div class="main main-raised">
     <div class="container">
-        <div class="section text-center">
-            <h2 class="title">Your main section here</h2>
+        <div class="text-center py-4">
+            <h3 class="title">Browse Courses</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="course-card mb-4">
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, doloribus?</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis nihil qui quas, eaque beatae quidem deleniti, culpa esse sint delectus accusamus, suscipit aut magnam earum ipsum nisi voluptatibus debitis? Natus.</p>
+                    <a href="#" class="btn btn-primary">View Course</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
