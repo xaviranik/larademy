@@ -21,9 +21,4 @@ Route::get('/logout', function () {
     auth()->logout();
 });
 
-Route::middleware('admin')->prefix('admin')->group(function () {
-    Route::resource('series', 'SeriesController');
-    Route::resource('{series_by_id}/lessons', 'LessonsController');
-});
-
 Route::get('/home', 'HomeController@index')->name('home');
