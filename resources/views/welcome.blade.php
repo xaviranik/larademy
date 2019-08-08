@@ -18,16 +18,21 @@
 <div class="main main-raised">
     <div class="container">
         <div class="text-center py-4">
-            <h3 class="title">Browse Courses</h3>
+            <h3>Browse Courses</h3>
+            <hr class="hr-style">
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="course-card mb-4">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, doloribus?</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis nihil qui quas, eaque beatae quidem deleniti, culpa esse sint delectus accusamus, suscipit aut magnam earum ipsum nisi voluptatibus debitis? Natus.</p>
-                    <a href="#" class="btn btn-primary">View Course</a>
+            @forelse ($series as $s)
+                <div class="col-md-12">
+                    <div class="course-card mb-4" style="background-image: url({{ asset('storage/'. $s->image_url) }})">
+                        <h3 class="mb-4">{{ $s->title }}</h3>
+                        <p>{{ $s->description }}</p>
+                        <a href="#" class="btn btn-primary">View Course</a>
+                    </div>
                 </div>
-            </div>
+            @empty
+                
+            @endforelse
         </div>
     </div>
 </div>

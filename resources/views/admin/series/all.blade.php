@@ -15,6 +15,8 @@
                 <div class="card-header card-header-primary bg-gredient-primary">All Series</div>
 
                 <div class="card-body">
+                    <a href="{{ route('series.create') }}" class="btn btn-primary mb-4">Create Series</a>
+
                     <table class="table table-striped">
                         <thead>
                             <th class="col-md-10">Title</th>
@@ -25,8 +27,10 @@
                             @forelse ($series as $s)
                             <tr>
                                 <td>{{ $s->title }}</td>
-                                <td><a href="{{ route('series.edit', $s->slug) }}"><i class="material-icons button-icon text-primary">create</i></a></td>
-                                <td><a href="#"><i class="material-icons button-icon text-danger">delete_forever</i></a></td>
+                                <td><a href="{{ route('series.edit', $s->slug) }}"><i
+                                            class="material-icons button-icon text-primary">create</i></a></td>
+                                <td><a href="#"><i class="material-icons button-icon text-danger">delete_forever</i></a>
+                                </td>
                             </tr>
                             @empty
 

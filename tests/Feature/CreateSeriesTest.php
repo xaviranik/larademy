@@ -28,7 +28,7 @@ class CreateSeriesTest extends TestCase
         ])->assertRedirect()
             ->assertSessionHas('success', 'Series created successfully');
 
-        Storage::disk(config('filesystems.default'))->assertExists('series/' . str_slug($title) . '.png');
+        Storage::disk(config('filesystems.default'))->assertExists('public/series/' . str_slug($title) . '.png');
 
         $this->assertDatabaseHas('series', [
             'slug' => str_slug($title)
