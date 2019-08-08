@@ -19,12 +19,11 @@
     <div class="container">
         <div class="text-center py-4">
             <h3>Browse Courses</h3>
-            <hr class="hr-style">
         </div>
         <div class="row">
             @forelse ($series as $s)
                 <div class="col-md-12">
-                    <div class="course-card mb-4" style="background-image: url({{ asset('storage/series/'. $s->image_url) }})">
+                    <div class="course-card mb-4" style="background-image: url({{ $s->image_path }})">
                         <h3 class="mb-4">{{ $s->title }}</h3>
                         <p>{{ $s->description }}</p>
                         <a href="#" class="btn btn-primary">View Course</a>
