@@ -23,4 +23,9 @@ class Series extends Model
     {
         return 'slug';
     }
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/series/' . $this->image_url);
+    }
 }
