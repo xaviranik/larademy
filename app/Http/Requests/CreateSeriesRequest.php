@@ -36,7 +36,7 @@ class CreateSeriesRequest extends SeriesRequest
             'title' => $this->title,
             'slug' => str_slug($this->title),
             'description' => $this->description,
-            'image_url' => 'series/' . $this->file_name
+            'image_url' => $this->file_name
         ]);
 
         Session()->flash('success', 'Series created successfully');
