@@ -6,10 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Redis;
+use App\Entities\Learning;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Learning;
 
     /**
      * The attributes that are mass assignable.
@@ -41,23 +42,5 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return in_array($this->email, config('larademy.administrators'));
-    }
-
-    public function completeLesson($lesson)
-    {
-        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id);
-    }
-
-    public function percentageCompletedForSeries($series)
-    {
-        $numberOfLessonsInSeries = $series->lesson->count();
-        $numberOfCompletedLessonsInSeries = $this->numberOfCompletedLessonsInSeries($series);
-
-        return ($numberOfCompletedLessonsInSeries / $numberOfLessonsInSeries) * 100;
-    }
-
-    public function numberOfCompletedLessonsInSeries($series)
-    {
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
 }
