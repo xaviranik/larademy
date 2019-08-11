@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Redis;
 
 class User extends Authenticatable
 {
@@ -40,5 +41,10 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return in_array($this->email, config('larademy.administrators'));
+    }
+
+    public function completeLesson($lesson)
+    {
+        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id);
     }
 }
