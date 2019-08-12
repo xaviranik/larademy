@@ -23,4 +23,9 @@ trait Learning {
     {
         return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
+
+    public function hasStartedSeries($series)
+    {
+        return $this->numberOfCompletedLessonsInSeries($series) > 0;
+    }
 }

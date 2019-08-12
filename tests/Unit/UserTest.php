@@ -69,4 +69,20 @@ class UserTest extends TestCase
         );
     
     }
+
+    public function test_a_user_can_start_a_series()
+    {
+        $this->flushRedis();
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+
+        $lesson1 = factory(Lesson::class)->create();
+
+        $lesson2 = factory(Lesson::class)->create();
+
+        $user->completeLesson($lesson1);
+
+        $this->assertTrue($user->hasStartedSeries($lesson1->series));
+        $this->assertFalse($user->hasStartedSeries($lesson2->series));
+    }
 }
