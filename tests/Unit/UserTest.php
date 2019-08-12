@@ -35,7 +35,7 @@ class UserTest extends TestCase
         );
 
         $this->assertEquals(
-            $user->numberOfCompletedLessonsInSeries($series), 2
+            $user->getNumberOfCompletedLessonsInSeries($series), 2
         );
     }
 
@@ -73,7 +73,6 @@ class UserTest extends TestCase
     public function test_a_user_can_start_a_series()
     {
         $this->flushRedis();
-        $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
 
         $lesson1 = factory(Lesson::class)->create();
@@ -84,5 +83,28 @@ class UserTest extends TestCase
 
         $this->assertTrue($user->hasStartedSeries($lesson1->series));
         $this->assertFalse($user->hasStartedSeries($lesson2->series));
+    }
+
+    public function test_a_user_can_get_completed_lessons_for_a_series()
+    {
+        $this->flushRedis();
+        $user = factory(User::class)->create();
+
+        $lesson1 = factory(Lesson::class)->create();
+        $lesson2 = factory(Lesson::class)->create(['series_id' => 1]);
+        $lesson3 = factory(Lesson::class)->create(['series_id' => 1]);
+
+        $user->completeLesson($lesson1);
+        $user->completeLesson($lesson2);
+
+        $completedLessons = $user->getCompletedLessons($lesson1->series);
+        $completedLessonsIds = $completedLessons->pluck('id')->all();
+
+        $this->assertInstanceOf(\Illuminate\Support\Collection::class, $completedLessons);
+        $this->assertInstanceOf(Lesson::class, $completedLessons->random());
+
+        $this->assertTrue(in_array($lesson1->id, $completedLessonsIds));
+        $this->assertTrue(in_array($lesson2->id, $completedLessonsIds));
+        $this->assertFalse(in_array($lesson3->id, $completedLessonsIds));
     }
 }

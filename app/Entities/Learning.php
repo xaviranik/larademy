@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Illuminate\Support\Facades\Redis;
+use App\Lesson;
 
 trait Learning {
 
@@ -14,18 +15,32 @@ trait Learning {
     public function percentageCompletedForSeries($series)
     {
         $numberOfLessonsInSeries = $series->lesson->count();
-        $numberOfCompletedLessonsInSeries = $this->numberOfCompletedLessonsInSeries($series);
+        $getNumberOfCompletedLessonsInSeries = $this->getNumberOfCompletedLessonsInSeries($series);
 
-        return ($numberOfCompletedLessonsInSeries / $numberOfLessonsInSeries) * 100;
+        return ($getNumberOfCompletedLessonsInSeries / $numberOfLessonsInSeries) * 100;
     }
-
-    public function numberOfCompletedLessonsInSeries($series)
-    {
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
-    }
-
+    
     public function hasStartedSeries($series)
     {
-        return $this->numberOfCompletedLessonsInSeries($series) > 0;
+        return $this->getNumberOfCompletedLessonsInSeries($series) > 0;
+    }
+
+    public function getNumberOfCompletedLessonsInSeries($series)
+    {
+        return count($this->getCompletedLessonsInSeries($series));
+    }
+
+    public function getCompletedLessonsInSeries($series)
+    {
+        return Redis::smembers("user:{$this->id}:series:{$series->id}");
+    }
+
+    public function getCompletedLessons($series)
+    {
+        $completedLessons = $this->getCompletedLessonsInSeries($series);
+        
+        return collect($completedLessons)->map(function($lessonId) {
+            return Lesson::find($lessonId);
+        });
     }
 }
