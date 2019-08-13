@@ -26,7 +26,7 @@
                     <div class="course-card mb-4" style="background-image: url({{ $s->image_path }})">
                         <h3 class="mb-4">{{ $s->title }}</h3>
                         <p>{{ $s->description }}</p>
-                        <a href="#" class="btn btn-primary">View Course</a>
+                        <a href="{{ route('series', $s->slug) }}" class="btn btn-primary">View Course</a>
                     </div>
                 </div>
             @empty

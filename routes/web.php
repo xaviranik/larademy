@@ -20,6 +20,7 @@ Route::get('/logout', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/series/{series}', 'FrontendController@series')->name('series');
 
 Route::get('/myredis', function() {
     //Redis::set('friend', 'bob');
