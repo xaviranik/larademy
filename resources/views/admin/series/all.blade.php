@@ -26,7 +26,7 @@
                         <tbody>
                             @forelse ($series as $s)
                             <tr>
-                                <td>{{ $s->title }}</td>
+                                <td><a href="{{ route('series.show', $s->slug) }}">{{ $s->title }}</a></td>
                                 <td><a href="{{ route('series.edit', $s->slug) }}"><i
                                             class="material-icons button-icon text-primary">create</i></a></td>
                                 <td><a href="#"><i class="material-icons button-icon text-danger">delete_forever</i></a>

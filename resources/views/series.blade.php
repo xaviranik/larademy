@@ -28,7 +28,7 @@
                         <div class="mt-4">
                             @auth
                                 @hasStartedSeries($series)
-                                    <a href="#" class="btn btn-primary">Continue Series</a>
+                                    <a href="{{ route('series.learning', $series->slug) }}" class="btn btn-primary">Continue Series</a>
                                 @else
                                     <a href="#" class="btn btn-primary">Start Series</a>
                                 @endhasStartedSeries
