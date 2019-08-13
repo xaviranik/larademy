@@ -26,15 +26,15 @@
 
                     <div class="row">
                         <div class="mt-4">
-                            @if (auth()->user())
-                                @if (auth()->user()->hasStartedSeries($series))
+                            @auth
+                                @hasStartedSeries($series)
                                     <a href="#" class="btn btn-primary">Continue Series</a>
                                 @else
                                     <a href="#" class="btn btn-primary">Start Series</a>
-                                @endif
+                                @endhasStartedSeries
                             @else
                                 <a href="#" class="btn btn-primary">Login to get started</a>
-                            @endif
+                            @endauth
                         </div>
                     </div>
                 </div>
