@@ -28,4 +28,9 @@ class Series extends Model
     {
         return asset('storage/series/' . $this->image_url);
     }
+
+    public function getOrderedLessons()
+    {
+        return $this->lesson()->orderBy('episode_number', 'asc')->get();
+    }
 }
