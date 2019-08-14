@@ -4292,8 +4292,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['default_lesson'],
+  data: function data() {
+    return {
+      lesson: JSON.parse(this.default_lesson)
+    };
+  },
   mounted: function mounted() {
     var player = new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"]('handstick');
   }
@@ -42119,18 +42126,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "player" }, [
-      _c("div", { attrs: { "data-vimeo-id": "19231868", id: "handstick" } })
+  return _c("div", { staticClass: "player" }, [
+    _c("div", { staticClass: "embed-responsive embed-responsive-16by9" }, [
+      _vm.lesson
+        ? _c("div", {
+            staticClass: "embed-responsive-item",
+            attrs: { "data-vimeo-id": _vm.lesson.video_id, id: "handstick" }
+          })
+        : _vm._e()
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
