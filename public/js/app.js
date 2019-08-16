@@ -4295,6 +4295,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4308,11 +4309,17 @@ __webpack_require__.r(__webpack_exports__);
     displayVideoCompleteAlert: function displayVideoCompleteAlert() {
       var _this = this;
 
-      bootbox__WEBPACK_IMPORTED_MODULE_0___default.a.confirm("You have completed this lesson!\nProceed to next lesson?", function (result) {
-        if (result) {
-          window.location = _this.next_lesson_url;
-        }
-      });
+      if (this.next_lesson_url) {
+        bootbox__WEBPACK_IMPORTED_MODULE_0___default.a.confirm("You have completed this lesson!\nProceed to next lesson?", function (result) {
+          if (result) {
+            window.location = _this.next_lesson_url;
+          }
+        });
+      } else {
+        bootbox__WEBPACK_IMPORTED_MODULE_0___default.a.alert("Congratulations, You have completed the series!", function () {
+          window.location = '/';
+        });
+      }
     }
   },
   mounted: function mounted() {

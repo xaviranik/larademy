@@ -1,26 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+$nextLesson = $lesson->getNextLesson();
+$previousLesson = $lesson->getPreviousLesson();
+@endphp
+
+
 <div class="main main-raised page-header x-header mb-4">
 </div>
 <div class="container mb-4">
     <div class="row">
         <div class="col-md-12">
-            <vue-player default_lesson="{{ $lesson }}"
-                next_lesson_url="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id]) }}">
+            <vue-player default_lesson="{{ $lesson }}" @if ($nextLesson)
+                next_lesson_url="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id]) }}"
+                @endif>
             </vue-player>
         </div>
     </div>
 
     <div class="row justify-content-between px-3 py-2">
-        @if ($lesson->getPreviousLesson())
-        <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getPreviousLesson()->id]) }}"
+        @if ($previousLesson)
+        <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $previousLesson->id]) }}"
             class="btn btn-primary"><i class="material-icons">chevron_left</i> Previous Lesson</a>
         @else
         <a href="#" class="btn btn-primary disabled"><i class="material-icons">chevron_left</i> Previous Lesson</a>
         @endif
-        @if ($lesson->getNextLesson())
-        <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id]) }}"
+        @if ($nextLesson)
+        <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id]) }}"
             class="btn btn-primary">Next Lesson <i class="material-icons">chevron_right</i></a>
         @else
         <a href="#" class="btn btn-outline-primary">Finish Series</a>
