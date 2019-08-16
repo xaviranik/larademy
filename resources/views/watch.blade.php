@@ -36,7 +36,7 @@ $previousLesson = $lesson->getPreviousLesson();
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
                     <h4 class="title">{{ $lesson->title }}</h4>
@@ -45,16 +45,20 @@ $previousLesson = $lesson->getPreviousLesson();
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
                     <h4 class="title mb-0">All Lessons</h4>
                     <ul class="list-group">
                         @foreach ($series->getOrderedLessons() as $l)
-                        <li class="list-group-item p-3">
-                            <a style="line-height: initial;"
-                                href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $l->id]) }}">{{ $l->episode_number . ". " .$l->title }}</a>
-                            <hr>
+                        <li class="list-group-item">
+                            @if (auth()->user()->hasCompletedLesson($l))
+                                <i class="material-icons">check_box</i>
+                            @else
+                                <i class="material-icons">check_box_outline_blank</i>
+                            @endif
+                            <a class="lesson @if($l->id == $lesson->id) active @endif" style="line-height: initial;"
+                                href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $l->id]) }}">{{ $l->title }}</a>
                         </li>
                         @endforeach
                     </ul>
