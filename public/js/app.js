@@ -4284,7 +4284,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vimeo_player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vimeo/player */ "./node_modules/@vimeo/player/dist/player.es.js");
+/* harmony import */ var bootbox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootbox */ "./node_modules/bootbox/bootbox.all.js");
+/* harmony import */ var bootbox__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootbox__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _vimeo_player__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vimeo/player */ "./node_modules/@vimeo/player/dist/player.es.js");
 //
 //
 //
@@ -4294,15 +4296,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['default_lesson'],
+  props: ['default_lesson', 'next_lesson_url'],
   data: function data() {
     return {
       lesson: JSON.parse(this.default_lesson)
     };
   },
+  methods: {
+    displayVideoCompleteAlert: function displayVideoCompleteAlert() {
+      var _this = this;
+
+      bootbox__WEBPACK_IMPORTED_MODULE_0___default.a.confirm("You have completed this lesson!\nProceed to next lesson?", function (result) {
+        if (result) {
+          window.location = _this.next_lesson_url;
+        }
+      });
+    }
+  },
   mounted: function mounted() {
-    var player = new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"]('handstick');
+    var _this2 = this;
+
+    var player = new _vimeo_player__WEBPACK_IMPORTED_MODULE_1__["default"]('handstick');
+    player.on('ended', function () {
+      _this2.displayVideoCompleteAlert();
+    });
   }
 });
 
@@ -42131,7 +42150,11 @@ var render = function() {
       _vm.lesson
         ? _c("div", {
             staticClass: "embed-responsive-item",
-            attrs: { "data-vimeo-id": _vm.lesson.video_id, id: "handstick" }
+            attrs: {
+              "data-vimeo-autoplay": "true",
+              "data-vimeo-id": _vm.lesson.video_id,
+              id: "handstick"
+            }
           })
         : _vm._e()
     ])

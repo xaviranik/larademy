@@ -6,7 +6,9 @@
 <div class="container mb-4">
     <div class="row">
         <div class="col-md-12">
-            <vue-player default_lesson="{{ $lesson }}"></vue-player>
+            <vue-player default_lesson="{{ $lesson }}"
+                next_lesson_url="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id]) }}">
+            </vue-player>
         </div>
     </div>
 
@@ -41,10 +43,11 @@
                     <h4 class="title mb-0">All Lessons</h4>
                     <ul class="list-group">
                         @foreach ($series->getOrderedLessons() as $l)
-                            <li class="list-group-item p-3">
-                                <a style="line-height: initial;" href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $l->id]) }}">{{ $l->episode_number . ". " .$l->title }}</a>
-                                <hr>
-                            </li>
+                        <li class="list-group-item p-3">
+                            <a style="line-height: initial;"
+                                href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $l->id]) }}">{{ $l->episode_number . ". " .$l->title }}</a>
+                            <hr>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
