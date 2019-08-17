@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'FrontendController@welcome');
+Route::get('/', 'FrontendController@welcome')->name('welcome');
 
 Auth::routes();
 
@@ -21,7 +21,11 @@ Route::get('/logout', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/series/{series}', 'FrontendController@series')->name('series');
-Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
-Route::get('series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
 
-Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
+    Route::get('series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
+
+    Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
+});

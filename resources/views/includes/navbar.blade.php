@@ -25,11 +25,20 @@
                         <i class="material-icons">account_circle</i> {{ auth()->user()->name }}
                     </a>
                 </li>
+
+                @admin
+                    <li class="nav-item">
+                        <a href="{{ route('series.index') }}" class="nav-link">
+                            <i class="material-icons">dashboard</i>Manage Courses
+                        </a>
+                    </li>
+                @endadmin
+
                 <li class="nav-item">
-                    <a href="{{ route('series.index') }}" class="nav-link">
-                        <i class="material-icons">dashboard</i> My Courses
-                    </a>
-                </li>
+                        <a href="{{ route('logout') }}" class="nav-link">
+                            <i class="material-icons">power_settings_new</i>Logout
+                        </a>
+                    </li>
                 @endauth
 
                 @guest
