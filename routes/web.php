@@ -27,3 +27,7 @@ Route::middleware('auth')->group(function() {
 
     Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
 });
+
+Route::get('flush', function() {
+    Redis::flushall();
+});
