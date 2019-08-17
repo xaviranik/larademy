@@ -8,6 +8,7 @@
 </template>
 
 <script>
+    import Axios from 'axios'
     import bootbox from 'bootbox'
     import Player from '@vimeo/player'
     export default {
@@ -30,13 +31,22 @@
                         window.location = '/';
                     });
                 }
+            },
+            completeLesson() {
+                Axios.post(`/series/complete-lesson/${this.lesson.id}`, {})
+                .then(resp => {
+                    this.displayVideoCompleteAlert();
+                })
+                .catch(error => {
+                    
+                });
             }
         },
         mounted() {
             const player = new Player('handstick');
 
             player.on('ended', () => {
-                this.displayVideoCompleteAlert();
+                this.completeLesson();
             });
         }
     }
