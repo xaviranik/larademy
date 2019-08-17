@@ -4,6 +4,7 @@ namespace App\Entities;
 
 use Illuminate\Support\Facades\Redis;
 use App\Lesson;
+use App\Series;
 
 trait Learning {
 
@@ -47,5 +48,12 @@ trait Learning {
     public function hasCompletedLesson($lesson)
     {
         return in_array($lesson->id, $this->getCompletedLessonsInSeries($lesson->series));
+    }
+
+    public function getNextLessonToWatch(Series $series)
+    {
+        $lessonIds = $this->getCompletedLessonsInSeries($series);
+
+        return Lesson::find(end($lessonIds))->getNextLesson();
     }
 }
