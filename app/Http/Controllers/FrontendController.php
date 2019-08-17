@@ -16,4 +16,10 @@ class FrontendController extends Controller
     {
         return view('series')->withSeries($series);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('welcome');
+    }
 }

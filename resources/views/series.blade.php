@@ -30,7 +30,7 @@
                                 @hasStartedSeries($series)
                                     <a href="{{ route('series.learning', $series->slug) }}" class="btn btn-primary">Continue Series</a>
                                 @else
-                                    <a href="#" class="btn btn-primary">Start Series</a>
+                                    <a href="{{ route('series.learning', $series->slug) }}" class="btn btn-primary">Start Series</a>
                                 @endhasStartedSeries
                             @else
                                 <a href="#" class="btn btn-primary">Login to get started</a>
