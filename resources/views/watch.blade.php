@@ -13,21 +13,22 @@ $previousLesson = $lesson->getPreviousLesson();
 <div class="container mb-4">
     <div class="row">
         <div class="col-md-12">
-            <vue-player default_lesson="{{ $lesson }}" @if ($nextLesson)
+            <vue-player default_lesson="{{ $lesson }}"
+            @if ($nextLesson->id !== $lesson->id)
                 next_lesson_url="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $lesson->getNextLesson()->id]) }}"
-                @endif>
+            @endif>
             </vue-player>
         </div>
     </div>
 
     <div class="row justify-content-between px-3 py-2">
-        @if ($previousLesson)
+        @if ($previousLesson->id !== $lesson->id)
         <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $previousLesson->id]) }}"
             class="btn btn-primary"><i class="material-icons">chevron_left</i> Previous Lesson</a>
         @else
         <a href="#" class="btn btn-primary disabled"><i class="material-icons">chevron_left</i> Previous Lesson</a>
         @endif
-        @if ($nextLesson)
+        @if ($nextLesson->id !== $lesson->id)
         <a href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $nextLesson->id]) }}"
             class="btn btn-primary">Next Lesson <i class="material-icons">chevron_right</i></a>
         @else
