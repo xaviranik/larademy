@@ -29,6 +29,16 @@ class Series extends Model
         return asset('storage/series/' . $this->image_url);
     }
 
+    public function getSeriesBackgroundAttribute()
+    {
+        $background = array('bg-1.png', 'bg-2.png', 'bg-3.png');
+
+        $index = rand(0, count($background) - 1);
+        $randomBackground = $background[$index];
+
+        return asset('assets/static/'. $randomBackground);
+    }
+
     public function getOrderedLessons()
     {
         return $this->lesson()->orderBy('episode_number', 'asc')->get();

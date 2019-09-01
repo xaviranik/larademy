@@ -30,7 +30,7 @@
         @if (!auth()->check())
             <vue-login></vue-login>
         @endif
-        <vue-noty></vue-noty>
+        {{-- <vue-noty></vue-noty> --}}
     </div>
 
     @include('includes.footer')

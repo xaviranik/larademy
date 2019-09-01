@@ -22,16 +22,16 @@
         </div>
         <div class="row">
             @forelse ($series as $s)
-            <div class="col-md-12">
-                <div class="course-card mb-4" style="background-image: url({{ $s->image_path }})">
+            <div class="col-md-6">
+                <div class="course-card mb-4" style="background-image: url({{ $s->SeriesBackground }})">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h3 class="mb-4">{{ $s->title }}</h3>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <p>{{ $s->description }}</p>
+                        <div class="col-md-12">
+                            <p class="text-inside">{{ str_limit($s->description, 300) }}</p>
                             <a href="{{ route('series', $s->slug) }}" class="btn btn-primary">View Course</a>
                         </div>
                     </div>
