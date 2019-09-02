@@ -7,7 +7,7 @@
 }
 
 .x-header {
-    height: 25vh;
+    height: 15vh;
     background: linear-gradient(to right, #d53369, #cbad6d);
 }
 
@@ -79,4 +79,8 @@ hr.hr-style{
 
 .active {
     color: #9c27b0;
+}
+
+.disabled {
+    color: rgba(0, 0, 0, .5);
 }

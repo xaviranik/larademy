@@ -2,17 +2,12 @@
 
 @section('content')
 <div class="main main-raised page-header x-header mb-4">
-    <div class="container">
-        <div class="section text-center">
-            <h2 class="title">Manage All Your Series</h2>
-        </div>
-    </div>
 </div>
 <div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header card-header-primary bg-gredient-primary">All Series</div>
+                <div class="card-header card-header-primary bg-gredient-primary">Manage All Your Series</div>
 
                 <div class="card-body">
                     <a href="{{ route('series.create') }}" class="btn btn-primary mb-4">Create Series</a>

@@ -54,9 +54,9 @@ $previousLesson = $lesson->getPreviousLesson();
                         @foreach ($series->getOrderedLessons() as $l)
                         <li class="list-group-item">
                             @if (auth()->user()->hasCompletedLesson($l))
-                                <i class="material-icons">check_box</i>
+                                <i class="material-icons">check_circle</i>
                             @else
-                                <i class="material-icons">check_box_outline_blank</i>
+                                <i class="material-icons">radio_button_unchecked</i>
                             @endif
                             <a class="lesson @if($l->id == $lesson->id) active @endif" style="line-height: initial;"
                                 href="{{ route('series.watch', ['series' => $series->slug, 'lesson' => $l->id]) }}">{{ $l->title }}</a>

@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/logout', 'FrontendController@logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'FrontendController@home')->name('home');
 Route::get('/series/{series}', 'FrontendController@series')->name('series');
 
 

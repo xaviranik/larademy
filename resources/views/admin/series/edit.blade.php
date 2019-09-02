@@ -2,17 +2,12 @@
 
 @section('content')
 <div class="main main-raised page-header x-header mb-4">
-    <div class="container">
-        <div class="section text-center">
-            <h2 class="title">Update: {{ $series->title }}</h2>
-        </div>
-    </div>
 </div>
 <div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header card-header-primary bg-gredient-primary">Update Course</div>
+                <div class="card-header card-header-primary bg-gredient-primary">Update: {{ $series->title }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('series.update', $series->slug) }}" enctype="multipart/form-data" autocomplete="off">

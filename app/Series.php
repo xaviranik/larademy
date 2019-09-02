@@ -43,4 +43,9 @@ class Series extends Model
     {
         return $this->lesson()->orderBy('episode_number', 'asc')->get();
     }
+
+    public function getAllLessonsInSeriesCount()
+    {
+        return $this->lesson()->get()->count();
+    }
 }

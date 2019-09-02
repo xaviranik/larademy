@@ -15,13 +15,13 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('welcome') }}" class="nav-link">
                         <i class="material-icons">apps</i> All Courses
                     </a>
                 </li>
                 @auth
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('home') }}" class="nav-link">
                         <i class="material-icons">account_circle</i> {{ auth()->user()->name }}
                     </a>
                 </li>

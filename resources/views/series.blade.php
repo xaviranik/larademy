@@ -2,11 +2,6 @@
 
 @section('content')
 <div class="main main-raised page-header x-header mb-4">
-    <div class="container">
-        <div class="section text-center">
-            <h2 class="title">Let's Learn Something</h2>
-        </div>
-    </div>
 </div>
 <div class="container mb-5">
     <div class="row justify-content-center">
