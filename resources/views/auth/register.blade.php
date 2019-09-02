@@ -2,12 +2,19 @@
 
 @section('content')
 
-<div class="page-header">
+<div class="page-header x-header">
+</div>
+
+<div class="container-fluid bg-gredient-primary" style="height: 120vh;">
     <div class="container">
-        <div class="row justify-content-center" style="margin: 200px 0px;">
-            <div class="col-md-6">
+        <div class="row justify-content-between">
+            <div class="col-md-6 mb-3 text-white mt-2">
+                <h2 class="title text-white">Create your student account</h2>
+                <h4>Build skills for today, tomorrow, and beyond. Education to future-proof your career.</h4>
+            </div>
+            <div class="col-md-5">
                 <div class="card">
-                    <div class="card-header card-header-primary bg-gredient-primary">{{ __('Register') }}</div>
+                    <div class="card-header card-header-primary">{{ __('Register') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">

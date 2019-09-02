@@ -12,9 +12,12 @@
                         <div class="card-body">
                             <h4>Dashboard</h4>
                             <ul class="list-group">
-                                <li class="list-group-item"><a href="#"><i class="material-icons">bookmarks</i> Booksmarks</a></li>
-                                <li class="list-group-item"><a href="#"><i class="material-icons">chrome_reader_mode</i> Manage Courses</a></li>
-                                <li class="list-group-item"><a href="#"><i class="material-icons">build</i> User Settings</a></li>
+                                <li class="list-group-item"><a href="#"><i class="material-icons">bookmarks</i>
+                                        Bookmarks</a></li>
+                                <li class="list-group-item"><a href="#"><i class="material-icons">chrome_reader_mode</i>
+                                        Manage Courses</a></li>
+                                <li class="list-group-item"><a href="#"><i class="material-icons">build</i> User
+                                        Settings</a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,11 +39,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="disabled">Lessons: {{ auth()->user()->getNumberOfCompletedLessonsInSeries($s) }} /
+                                    <p class="disabled">Lessons:
+                                        {{ auth()->user()->getNumberOfCompletedLessonsInSeries($s) }} /
                                         {{ $s->getAllLessonsInSeriesCount() }}</p>
                                     <a href="{{ route('series.learning', $s->slug) }}"
-                                        class="btn btn-primary mt-3">Continue
-                                        Series</a>
+                                        class="btn btn-primary mt-3">Continue Series</a>
                                 </div>
                             </div>
                         </div>
